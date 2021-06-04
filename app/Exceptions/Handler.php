@@ -2,18 +2,22 @@
 
 namespace App\Exceptions;
 
-use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Exception;
 use Throwable;
+use Illuminate\Http\Response;
+use Illuminate\Http\JsonResponse;
+use App\Services\ExceptionResponse;
+use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
 class Handler extends ExceptionHandler
 {
+
     /**
      * A list of the exception types that are not reported.
      *
      * @var array
      */
-    protected $dontReport = [
-        //
+    protected $dontReport = [//
     ];
 
     /**
@@ -27,6 +31,7 @@ class Handler extends ExceptionHandler
         'password_confirmation',
     ];
 
+
     /**
      * Register the exception handling callbacks for the application.
      *
@@ -34,8 +39,25 @@ class Handler extends ExceptionHandler
      */
     public function register()
     {
-        $this->reportable(function (Throwable $e) {
-            //
+        $this->renderable(function (Exception $e, $request) {
+            return $this->handleException($request, $e);
         });
+    }
+
+
+    /**
+     * @param           $request
+     * @param Exception $exception
+     *
+     * @return JsonResponse|Response|\Symfony\Component\HttpFoundation\Response
+     * @throws Throwable
+     */
+    public function handleException($request, Exception $exception)
+    {
+        if ( ! $exception instanceof Exception) {
+            return parent::render($request, $exception);
+        }
+
+        return (new ExceptionResponse($exception))->handle();
     }
 }
