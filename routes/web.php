@@ -1,5 +1,6 @@
 <?php
 
+use App\Services\Response;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +15,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+
+    return response()->json(Response::error('The server is down for maintenance.'), 503);
 });
