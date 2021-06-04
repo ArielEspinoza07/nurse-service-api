@@ -10,7 +10,7 @@ Route::prefix('v1')
               });
          Route::middleware('auth:api')
               ->prefix('admin')
-              ->as('admin')
+              ->as('admin.')
               ->group(function () {
                   require_once 'admin/acl.php';
               });

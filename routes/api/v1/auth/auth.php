@@ -22,6 +22,6 @@ Route::post('password/forgot', [Auth\ForgotPasswordController::class => 'forgotP
      ->name('password.forgot');
 Route::post('password/reset', [Auth\ForgotPasswordController::class => 'resetPassword'])
      ->name('password.reset');
-Route::get('user', [Auth\LoginController::class => 'user'])
+Route::get('user', [Auth\LoginController::class => 'authUser'])
      ->name('auth.user')
      ->middleware('auth:api');

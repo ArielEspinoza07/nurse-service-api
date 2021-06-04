@@ -15,6 +15,7 @@ use Prettus\Repository\Contracts\RepositoryInterface;
 
 class ApiController extends Controller
 {
+
     /**
      * @param string $message
      * @param null   $data
@@ -90,6 +91,7 @@ class ApiController extends Controller
     protected function defaultShow(RepositoryInterface $repository, int $id): JsonResponse
     {
         try {
+            $repository->pushCriteria(app('App\Criteria\DeletedCriteria'));
             $model = $repository->find($id);
 
             return $this->success($this->modelName($repository).' retrieved.', $model);
@@ -152,7 +154,9 @@ class ApiController extends Controller
     {
         try {
             $repository->skipPresenter(true);
-            $model = $repository->find($id);
+            $model = $repository->makeModel()
+                                ->withTrashed()
+                                ->findOrFail($id);
             $model->restore();
             $repository->skipPresenter(false);
 

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use DateTime;
+use Illuminate\Support\Collection;
 use Laravel\Passport\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
@@ -13,18 +14,17 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 /**
  * Class User
- * @property integer            id
- * @property string             name
- * @property string             email
- * @property string             password
- * @property DateTime           email_verified_at
- * @property string             remember_token
- * @property DateTime           created_at
- * @property DateTime           updated_at
- * @property DateTime           deleted_at
+ * @property integer                     id
+ * @property string                      name
+ * @property string                      email
+ * @property string                      password
+ * @property DateTime                    email_verified_at
+ * @property string                      remember_token
+ * @property DateTime                    created_at
+ * @property DateTime                    updated_at
+ * @property DateTime                    deleted_at
  *
- * @property-read null|Customer customer
- *
+ * @property-read Collection|Role[]|null roles
  *
  * @package App\Models
  */
@@ -75,6 +75,5 @@ class User extends Authenticatable implements MustVerifyEmail
         'updated_at'        => 'datetime:Y-m-d H:i:s',
         'deleted_at'        => 'datetime:Y-m-d H:i:s',
     ];
-
 
 }

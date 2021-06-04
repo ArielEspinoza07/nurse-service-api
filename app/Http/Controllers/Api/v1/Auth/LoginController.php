@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers\Api\v1\Auth;
 
-;
-
 use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Hash;
@@ -72,7 +70,7 @@ class LoginController extends ApiController
     /**
      * @return JsonResponse
      */
-    public function user(): JsonResponse
+    public function authUser(): JsonResponse
     {
         return $this->defaultShow($this->repository, auth()->id());
     }
