@@ -24,7 +24,7 @@ class RolePermissionAssignRequest extends FormRequest
     public function rules()
     {
         return [
-            'permission' => 'required|string',
+            'permission' => 'required|array',
         ];
     }
 }

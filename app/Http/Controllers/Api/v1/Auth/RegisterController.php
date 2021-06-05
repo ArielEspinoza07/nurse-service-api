@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Api\v1\Auth;;
+namespace App\Http\Controllers\Api\v1\Auth;
 
 use App\Models\User;
 use Illuminate\Http\JsonResponse;
@@ -24,7 +24,6 @@ class RegisterController extends ApiController
             'name'     => 'required|string|max:255',
             'email'    => 'required|string|email|max:255|unique:users,email',
             'password' => 'required|string|confirmed|min:6',
-            'type'     => 'required|string|in:personal,enterprise',
         ]);
         if ($validator->fails()) {
 

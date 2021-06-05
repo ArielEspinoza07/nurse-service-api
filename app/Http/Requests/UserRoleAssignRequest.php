@@ -26,7 +26,7 @@ class UserRoleAssignRequest extends FormRequest
     public function rules()
     {
         return [
-            'role' => 'required|string',
+            'role' => 'required|array',
         ];
     }
 }
