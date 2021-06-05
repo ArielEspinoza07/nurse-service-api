@@ -44,3 +44,6 @@
     1. Run command php artisan passport:client --password
         This command will ask you a name for the new client
 
+### Api Doc
+
+    https://documenter.getpostman.com/view/438793/TzY4hG5X
