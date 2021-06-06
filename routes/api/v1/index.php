@@ -12,6 +12,7 @@ Route::prefix('v1')
               ->prefix('admin')
               ->as('admin.')
               ->group(function () {
+                  require_once 'admin/medical_note_type.php';
                   require_once 'admin/permission.php';
                   require_once 'admin/role.php';
                   require_once 'admin/user.php';

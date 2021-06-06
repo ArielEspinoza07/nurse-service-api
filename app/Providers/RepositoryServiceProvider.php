@@ -11,6 +11,7 @@ class RepositoryServiceProvider extends ServiceProvider
      * @var array
      */
     private $models = [
+        'MedicalNoteType',
         'Permission',
         'Role',
         'User',
