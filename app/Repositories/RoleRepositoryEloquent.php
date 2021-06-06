@@ -21,7 +21,7 @@ class RoleRepositoryEloquent extends BaseRepository implements RoleRepository
      */
     protected $fieldSearchable = [
         'id',
-        'name',
+        'name' => 'like',
         'guard_name',
         'created_at',
         'updated_at',

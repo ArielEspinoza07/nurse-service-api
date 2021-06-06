@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use DateTime;
+use Carbon\Carbon;
 use Illuminate\Support\Collection;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -13,9 +13,9 @@ use Spatie\Permission\Models\Permission as SpatiePermission;
  * @property int                         id
  * @property string                      name
  * @property string                      guard
- * @property DateTime                    created_at
- * @property DateTime                    updated_at
- * @property DateTime                    deleted_at
+ * @property Carbon                    created_at
+ * @property Carbon                    updated_at
+ * @property Carbon                    deleted_at
  *
  * @property-read Collection|Role[]|null roles
  *

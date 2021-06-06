@@ -12,6 +12,7 @@ class RepositoryServiceProvider extends ServiceProvider
      */
     private $models = [
         'MedicalNoteType',
+        'MedicalNote',
         'Permission',
         'Role',
         'User',

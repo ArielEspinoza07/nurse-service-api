@@ -2,29 +2,31 @@
 
 namespace App\Models;
 
-use DateTime;
+use Carbon\Carbon;
 use Illuminate\Support\Collection;
 use Laravel\Passport\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 /**
  * Class User
- * @property integer                     id
- * @property string                      name
- * @property string                      email
- * @property string                      password
- * @property DateTime                    email_verified_at
- * @property string                      remember_token
- * @property DateTime                    created_at
- * @property DateTime                    updated_at
- * @property DateTime                    deleted_at
+ * @property integer                            id
+ * @property string                             name
+ * @property string                             email
+ * @property string                             password
+ * @property Carbon                             email_verified_at
+ * @property string                             remember_token
+ * @property Carbon                             created_at
+ * @property Carbon                             updated_at
+ * @property Carbon                             deleted_at
  *
- * @property-read Collection|Role[]|null roles
+ * @property-read Collection|Role[]|null        roles
+ * @property-read Collection|MedicalNote[]|null medicalNotes
  *
  * @package App\Models
  */
@@ -76,4 +78,12 @@ class User extends Authenticatable implements MustVerifyEmail
         'deleted_at'        => 'datetime:Y-m-d H:i:s',
     ];
 
+
+    /**
+     * @return HasMany
+     */
+    public function medicalNotes(): HasMany
+    {
+        return $this->hasMany(MedicalNote::class, 'user_id', 'id');
+    }
 }

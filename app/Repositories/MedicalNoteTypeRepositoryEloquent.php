@@ -21,7 +21,7 @@ class MedicalNoteTypeRepositoryEloquent extends BaseRepository implements Medica
      */
     protected $fieldSearchable = [
         'id',
-        'name',
+        'name' => 'like',
         'created_at',
         'updated_at',
         'deleted_at',

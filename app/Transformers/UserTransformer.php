@@ -18,6 +18,7 @@ class UserTransformer extends TransformerAbstract
      * @var array
      */
     protected $availableIncludes = [
+        'medical_notes',
         'roles',
     ];
 
@@ -45,6 +46,17 @@ class UserTransformer extends TransformerAbstract
             'updated_at'        => $model->updated_at ? $model->updated_at->toDateTimeString() : null,
             'deleted_at'        => $model->deleted_at ? $model->deleted_at->toDateTimeString() : null,
         ];
+    }
+
+
+    /**
+     * @param User $model
+     *
+     * @return Collection
+     */
+    protected function includeMedicalNotes(User $model): Collection
+    {
+        return $this->collection($model->medicalNotes, new MedicalNoteTransformer());
     }
 
 

@@ -31,8 +31,8 @@ class UserRepositoryEloquent extends BaseRepository implements UserRepository
      */
     protected $fieldSearchable = [
         'id',
-        'name',
-        'email',
+        'name'  => 'like',
+        'email' => 'like',
         'email_verified_at',
         'created_at',
         'updated_at',
@@ -91,12 +91,14 @@ class UserRepositoryEloquent extends BaseRepository implements UserRepository
     public function create(array $attributes)
     {
         $this->validator->with($attributes)
-            ->passesOrFail(ValidatorInterface::RULE_CREATE);
+                        ->passesOrFail(ValidatorInterface::RULE_CREATE);
         $temporarySkipPresenter = $this->skipPresenter;
         $this->skipPresenter(true);
         event(new RepositoryEntityCreating($this, $attributes));
         $roles = $attributes['roles'] ?? null;
-        if ($roles) unset($attributes['roles']);
+        if ($roles) {
+            unset($attributes['roles']);
+        }
         $model = $this->model->newInstance($attributes);
         $model->save();
         if ($roles) {
@@ -121,7 +123,7 @@ class UserRepositoryEloquent extends BaseRepository implements UserRepository
     public function update(array $attributes, $id)
     {
         $this->validator->with($attributes)
-            ->passesOrFail(ValidatorInterface::RULE_UPDATE);
+                        ->passesOrFail(ValidatorInterface::RULE_UPDATE);
         $temporarySkipPresenter = $this->skipPresenter;
         $this->skipPresenter(true);
         /**
@@ -130,7 +132,9 @@ class UserRepositoryEloquent extends BaseRepository implements UserRepository
         $model = $this->model->findOrFail($id);
         event(new RepositoryEntityUpdating($this, $model));
         $roles = $attributes['roles'] ?? null;
-        if ($roles) unset($attributes['roles']);
+        if ($roles) {
+            unset($attributes['roles']);
+        }
         $model->fill($attributes);
         $model->save();
         if ($roles) {

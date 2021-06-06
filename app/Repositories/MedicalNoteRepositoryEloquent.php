@@ -2,18 +2,18 @@
 
 namespace App\Repositories;
 
-use App\Models\Permission;
-use App\Presenters\PermissionPresenter;
-use App\Validators\PermissionValidator;
+use App\Models\MedicalNote;
+use App\Presenters\MedicalNotePresenter;
+use App\Validators\MedicalNoteValidator;
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
 
 /**
- * Class PermissionRepositoryEloquent.
+ * Class MedicalNoteRepositoryEloquent.
  *
  * @package namespace App\Repositories;
  */
-class PermissionRepositoryEloquent extends BaseRepository implements PermissionRepository
+class MedicalNoteRepositoryEloquent extends BaseRepository implements MedicalNoteRepository
 {
 
     /**
@@ -22,9 +22,12 @@ class PermissionRepositoryEloquent extends BaseRepository implements PermissionR
     protected $fieldSearchable = [
         'id',
         'name' => 'like',
-        'guard_name',
+        'note',
+        'medical_note_type_id',
+        'user_id',
         'created_at',
         'updated_at',
+        'deleted_at',
     ];
 
 
@@ -35,7 +38,7 @@ class PermissionRepositoryEloquent extends BaseRepository implements PermissionR
      */
     public function model()
     {
-        return Permission::class;
+        return MedicalNote::class;
     }
 
 
@@ -46,7 +49,8 @@ class PermissionRepositoryEloquent extends BaseRepository implements PermissionR
      */
     public function validator()
     {
-        return PermissionValidator::class;
+
+        return MedicalNoteValidator::class;
     }
 
 
@@ -64,6 +68,6 @@ class PermissionRepositoryEloquent extends BaseRepository implements PermissionR
      */
     public function presenter()
     {
-        return PermissionPresenter::class;
+        return MedicalNotePresenter::class;
     }
 }
