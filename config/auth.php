@@ -14,7 +14,7 @@ return [
     */
 
     'defaults' => [
-        'guard' => 'api',
+        'guard'     => 'api',
         'passwords' => 'users',
     ],
 
@@ -67,7 +67,7 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => App\Models\User::class,
+            'model'  => App\Models\User::class,
         ],
 
         // 'users' => [
@@ -94,8 +94,8 @@ return [
     'passwords' => [
         'users' => [
             'provider' => 'users',
-            'table' => 'password_resets',
-            'expire' => 60,
+            'table'    => 'password_resets',
+            'expire'   => 60,
             'throttle' => 60,
         ],
     ],
@@ -113,4 +113,15 @@ return [
 
     'password_timeout' => 10800,
 
+    /*
+    |-------------------------------------------------------------------------
+    | Expiration Times
+    |-------------------------------------------------------------------------
+    |
+    | Here you may define tokens expiration time
+    |
+    */
+
+    'token_expiration_time'         => env('APP_TOKEN_EXP_TIME', 10),
+    'refresh_token_expiration_time' => env('APP_REFRESH_TOKEN_EXP_TIME', 20),
 ];
