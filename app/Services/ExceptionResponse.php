@@ -30,6 +30,10 @@ class ExceptionResponse
      * @var array
      */
     private $exceptions = [
+        'AccessDenied'     => [
+            'code'    => 403,
+            'message' => null,
+        ],
         'Authentication'   => [
             'code'    => 403,
             'message' => null,
