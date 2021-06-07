@@ -6,6 +6,7 @@ use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
+
     /**
      * Seed the application's database.
      *
@@ -14,6 +15,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call([
+            MedicalNoteTypeSeeder::class,
             PermissionSeeder::class,
             RoleSeeder::class,
             UserSeeder::class,
