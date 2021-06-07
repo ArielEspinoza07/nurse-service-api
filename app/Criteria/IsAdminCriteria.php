@@ -25,7 +25,7 @@ class IsAdminCriteria implements CriteriaInterface
     {
         if (auth()
             ->user()
-            ->hasRole('admin')) {
+            ->isAdmin()) {
 
             return $model;
         }

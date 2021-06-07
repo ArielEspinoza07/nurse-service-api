@@ -86,4 +86,13 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasMany(MedicalNote::class, 'user_id', 'id');
     }
+
+
+    /**
+     * @return bool
+     */
+    public function isAdmin(): bool
+    {
+        return $this->hasRole('admin');
+    }
 }
