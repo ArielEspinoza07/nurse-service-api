@@ -48,6 +48,8 @@ class MedicalNotesController extends ApiController
      */
     public function index()
     {
+        $this->repository->pushCriteria(app('App\Criteria\IsAdminCriteria'));
+
         return $this->defaultIndex($this->repository);
     }
 
