@@ -30,6 +30,15 @@ class CreateMedicalNotesTable extends Migration
             $table->timestamps();
             $table->softDeletes();
 
+            $table->foreign('medical_note_type_id')
+                  ->references('id')
+                  ->on('medical_note_types')
+                  ->cascadeOnDelete();
+            $table->foreign('user_id')
+                  ->references('id')
+                  ->on('users')
+                  ->cascadeOnDelete();
+
             $table->index('created_at', 'medical_notes_created_at');
             $table->index('updated_at', 'medical_notes_updated_at');
             $table->index('deleted_at', 'medical_notes_deleted_at');
