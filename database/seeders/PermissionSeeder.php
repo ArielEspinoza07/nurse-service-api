@@ -2,8 +2,9 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Seeder;
 use App\Models\Permission;
+use Illuminate\Support\Str;
+use Illuminate\Database\Seeder;
 
 class PermissionSeeder extends Seeder
 {
@@ -17,6 +18,7 @@ class PermissionSeeder extends Seeder
     {
         $actions     = [
             'list_',
+            'show_',
             'create_',
             'update_',
             'delete_',
@@ -30,7 +32,7 @@ class PermissionSeeder extends Seeder
         ];
         $permissions = array_map(function ($module) use ($actions) {
             return array_map(function ($action) use ($module) {
-                return $action.$module;
+                return $action === 'list_' ? $action.$module : $action.Str::singular($module);
             }, $actions);
         }, $modules);
         foreach (collect($permissions)
