@@ -26,6 +26,7 @@ class PermissionSeeder extends Seeder
         ];
         $modules     = [
             'notes',
+            'note_types',
             'permissions',
             'roles',
             'users',

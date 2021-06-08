@@ -33,6 +33,7 @@ class PermissionsController extends ApiController
     {
         $this->repository = $repository;
         $this->validator  = $validator;
+        $this->authorizeResource(\App\Models\Permission::class);
     }
 
 

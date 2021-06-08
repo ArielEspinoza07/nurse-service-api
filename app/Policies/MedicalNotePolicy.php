@@ -39,7 +39,6 @@ class MedicalNotePolicy
      */
     public function view(User $user, MedicalNote $medicalNote)
     {
-        dd('here');
         if ( ! $user->hasPermissionTo('show_note')) {
 
             return false;
