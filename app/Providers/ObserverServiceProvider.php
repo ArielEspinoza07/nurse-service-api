@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use \App\Models;
 use App\Observers;
 use Illuminate\Support\ServiceProvider;
 
@@ -17,9 +18,10 @@ class ObserverServiceProvider extends ServiceProvider
     /**
      * @var array
      */
-    private $observers = [
-        '\App\Models\MedicalNote' => Observers\MedicalNoteObserver::class,
-        '\App\Models\User'        => Observers\UserObserver::class,
+    protected $observers = [
+        Models\MedicalNote::class   => Observers\MedicalNoteObserver::class,
+        Models\User::class          => Observers\UserObserver::class,
+        Models\WorkShiftTime::class => Observers\WorkShiftTimeObserver::class,
     ];
 
 

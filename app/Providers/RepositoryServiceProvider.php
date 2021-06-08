@@ -16,6 +16,7 @@ class RepositoryServiceProvider extends ServiceProvider
         'Permission',
         'Role',
         'User',
+        'WorkShiftTime',
     ];
 
 
@@ -38,7 +39,7 @@ class RepositoryServiceProvider extends ServiceProvider
     public function boot()
     {
         foreach ($this->models as $model) {
-            $this->app->bind("App\Repositories\\{$model}Repository", "App\Repositories\\{$model}Repository".'Eloquent');
+            $this->app->bind("App\Repositories\\{$model}Repository", "App\Repositories\\{$model}RepositoryEloquent");
         }
     }
 }

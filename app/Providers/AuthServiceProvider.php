@@ -2,7 +2,8 @@
 
 namespace App\Providers;
 
-use App\Models\User;
+use App\Models;
+use App\Policies;
 use Laravel\Passport\Passport;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
@@ -16,11 +17,12 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        \App\Models\MedicalNote::class     => \App\Policies\MedicalNotePolicy::class,
-        \App\Models\MedicalNoteType::class => \App\Policies\MedicalNoteTypePolicy::class,
-        \App\Models\Permission::class      => \App\Policies\PermissionPolicy::class,
-        \App\Models\Role::class            => \App\Policies\RolePolicy::class,
-        \App\Models\User::class            => \App\Policies\UserPolicy::class,
+        Models\MedicalNote::class     => Policies\MedicalNotePolicy::class,
+        Models\MedicalNoteType::class => Policies\MedicalNoteTypePolicy::class,
+        Models\Permission::class      => Policies\PermissionPolicy::class,
+        Models\Role::class            => Policies\RolePolicy::class,
+        Models\User::class            => Policies\UserPolicy::class,
+        Models\WorkShiftTime::class   => Policies\WorkShiftTimePolicy::class,
     ];
 
 
@@ -33,7 +35,7 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
         // Implicitly grant "admin" role all permission checks using can()
-        Gate::before(function (User $user, $ability) {
+        Gate::before(function (Models\User $user, $ability) {
             return $user->isAdmin() ? true : null;
         });
         Passport::routes();

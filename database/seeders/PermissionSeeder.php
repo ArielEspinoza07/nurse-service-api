@@ -30,6 +30,7 @@ class PermissionSeeder extends Seeder
             'permissions',
             'roles',
             'users',
+            'work_shift_times',
         ];
         $permissions = array_map(function ($module) use ($actions) {
             return array_map(function ($action) use ($module) {
