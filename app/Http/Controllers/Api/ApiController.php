@@ -153,12 +153,10 @@ class ApiController extends Controller
     public function defaultRestore(RepositoryInterface $repository, int $id): JsonResponse
     {
         try {
-            $repository->skipPresenter(true);
             $model = $repository->makeModel()
                                 ->withTrashed()
-                                ->findOrFail($id);
-            $model->restore();
-            $repository->skipPresenter(false);
+                                ->findOrFail($id)
+                                ->restore();
 
             return $this->success($this->modelName($repository).' restored.', $model);
         } catch (Exception $exception) {
