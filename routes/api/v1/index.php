@@ -17,6 +17,7 @@ Route::prefix('v1')
                   require_once 'admin/permission.php';
                   require_once 'admin/role.php';
                   require_once 'admin/user.php';
+                  require_once 'admin/work_shift.php';
                   require_once 'admin/work_shift_time.php';
               });
      });

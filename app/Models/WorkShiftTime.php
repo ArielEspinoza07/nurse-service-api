@@ -3,21 +3,25 @@
 namespace App\Models;
 
 use Carbon\Carbon;
+use Illuminate\Support\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Prettus\Repository\Contracts\Transformable;
 use Prettus\Repository\Traits\TransformableTrait;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 /**
  * Class WorkShiftTime.
- * @property integer id
- * @property string  name
- * @property Carbon  start_at
- * @property Carbon  end_at
- * @property Carbon  created_at
- * @property Carbon  updated_at
- * @property Carbon  deleted_at
+ * @property integer                          id
+ * @property string                           name
+ * @property Carbon                           start_at
+ * @property Carbon                           end_at
+ * @property Carbon                           created_at
+ * @property Carbon                           updated_at
+ * @property Carbon                           deleted_at
+ *
+ * @property-read Collection|WorkShift[]|null workShifts
  *
  * @package namespace App\Models;
  */
@@ -66,4 +70,13 @@ class WorkShiftTime extends Model implements Transformable
         'updated_at' => 'datetime:Y-m-d H:i:s',
         'deleted_at' => 'datetime:Y-m-d H:i:s',
     ];
+
+
+    /**
+     * @return HasMany
+     */
+    public function workShifts(): HasMany
+    {
+        return $this->hasMany(WorkShift::class, 'work_shift_time_id', 'id');
+    }
 }

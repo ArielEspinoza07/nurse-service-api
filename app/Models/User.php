@@ -25,8 +25,9 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  * @property Carbon                             updated_at
  * @property Carbon                             deleted_at
  *
- * @property-read Collection|Role[]|null        roles
  * @property-read Collection|MedicalNote[]|null medicalNotes
+ * @property-read Collection|Role[]|null        roles
+ * @property-read Collection|WorkShift[]|null   workShifts
  *
  * @package App\Models
  */
@@ -80,6 +81,15 @@ class User extends Authenticatable implements MustVerifyEmail
 
 
     /**
+     * @return bool
+     */
+    public function isAdmin(): bool
+    {
+        return $this->hasRole('admin');
+    }
+
+
+    /**
      * @return HasMany
      */
     public function medicalNotes(): HasMany
@@ -89,10 +99,10 @@ class User extends Authenticatable implements MustVerifyEmail
 
 
     /**
-     * @return bool
+     * @return HasMany
      */
-    public function isAdmin(): bool
+    public function workShifts(): HasMany
     {
-        return $this->hasRole('admin');
+        return $this->hasMany(WorkShift::class, 'user_id', 'id');
     }
 }

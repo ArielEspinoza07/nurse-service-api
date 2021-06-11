@@ -22,6 +22,7 @@ class AuthServiceProvider extends ServiceProvider
         Models\Permission::class      => Policies\PermissionPolicy::class,
         Models\Role::class            => Policies\RolePolicy::class,
         Models\User::class            => Policies\UserPolicy::class,
+        Models\WorkShift::class       => Policies\WorkShiftPolicy::class,
         Models\WorkShiftTime::class   => Policies\WorkShiftTimePolicy::class,
     ];
 

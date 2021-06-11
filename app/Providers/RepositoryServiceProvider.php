@@ -16,6 +16,7 @@ class RepositoryServiceProvider extends ServiceProvider
         'Permission',
         'Role',
         'User',
+        'WorkShift',
         'WorkShiftTime',
     ];
 

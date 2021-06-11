@@ -30,9 +30,11 @@ class MedicalNoteFactory extends Factory
             'note'                 => $this->faker->paragraph,
             'medical_note_type_id' => MedicalNoteType::query()
                                                      ->inRandomOrder()
+                                                     ->latest()
                                                      ->first()->id,
             'user_id'              => User::query()
                                           ->inRandomOrder()
+                                          ->latest()
                                           ->first()->id,
         ];
     }

@@ -12,10 +12,10 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
  * Class Role
  * @property int                               id
  * @property string                            name
- * @property string                            guard
- * @property Carbon                          created_at
- * @property Carbon                          updated_at
- * @property Carbon                          deleted_at
+ * @property string                            guard_name
+ * @property Carbon                            created_at
+ * @property Carbon                            updated_at
+ * @property Carbon                            deleted_at
  *
  * @property-read Collection|Permission[]|null permissions
  * @property-read Collection|User[]|null       users
@@ -58,7 +58,7 @@ class Role extends SpatieRole
     protected $casts = [
         'id'         => 'int',
         'name'       => 'string',
-        'guard'      => 'string',
+        'guard_name' => 'string',
         'created_at' => 'datetime:Y-m-d H:i:s',
         'updated_at' => 'datetime:Y-m-d H:i:s',
         'deleted_at' => 'datetime:Y-m-d H:i:s',

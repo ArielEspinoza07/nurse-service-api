@@ -5,6 +5,7 @@ namespace App\Providers;
 use \App\Models;
 use App\Observers;
 use Illuminate\Support\ServiceProvider;
+use PhpParser\Node\Expr\AssignOp\Mod;
 
 /**
  * Class ObserverServiceProvider
@@ -21,6 +22,7 @@ class ObserverServiceProvider extends ServiceProvider
     protected $observers = [
         Models\MedicalNote::class   => Observers\MedicalNoteObserver::class,
         Models\User::class          => Observers\UserObserver::class,
+        Models\WorkShift::class     => Observers\WorkShiftObserver::class,
         Models\WorkShiftTime::class => Observers\WorkShiftTimeObserver::class,
     ];
 

@@ -20,6 +20,7 @@ class UserTransformer extends TransformerAbstract
     protected $availableIncludes = [
         'medical_notes',
         'roles',
+        'work_shifts',
     ];
 
     /**
@@ -68,5 +69,16 @@ class UserTransformer extends TransformerAbstract
     protected function includeRoles(User $model): Collection
     {
         return $this->collection($model->roles, new RoleTransformer());
+    }
+
+
+    /**
+     * @param User $model
+     *
+     * @return Collection
+     */
+    protected function includeWorkShifts(User $model): Collection
+    {
+        return $this->collection($model->workShifts, new WorkShiftTransformer());
     }
 }
