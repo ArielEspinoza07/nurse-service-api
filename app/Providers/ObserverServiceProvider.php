@@ -21,6 +21,8 @@ class ObserverServiceProvider extends ServiceProvider
      */
     protected $observers = [
         Models\MedicalNote::class   => Observers\MedicalNoteObserver::class,
+        Models\Permission::class    => Observers\PermissionObserver::class,
+        Models\Role::class          => Observers\RoleObserver::class,
         Models\User::class          => Observers\UserObserver::class,
         Models\WorkShift::class     => Observers\WorkShiftObserver::class,
         Models\WorkShiftTime::class => Observers\WorkShiftTimeObserver::class,

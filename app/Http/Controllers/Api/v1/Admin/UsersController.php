@@ -49,6 +49,8 @@ class UsersController extends ApiController
      */
     public function index()
     {
+        $this->repository->pushCriteria(app('App\Criteria\UsersCriteria'));
+
         return $this->defaultIndex($this->repository);
     }
 
