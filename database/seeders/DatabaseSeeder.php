@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
             MedicalNoteTypeSeeder::class,
             PermissionSeeder::class,
             RoleSeeder::class,
+            RolePermissionsSeeder::class,
             UserSeeder::class,
             WorkShiftTimeSeeder::class,
         ]);

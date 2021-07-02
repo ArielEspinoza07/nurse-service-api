@@ -85,7 +85,8 @@ class UserObserver
      */
     public function restored(User $user)
     {
-        //
+        $user->medicalNotes->restore();
+        $user->workShifts->restore();
     }
 
 

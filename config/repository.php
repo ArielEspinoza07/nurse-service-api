@@ -15,7 +15,7 @@ return [
     |
     */
     'pagination' => [
-        'limit' => 15
+        'limit' => env('APP_PAGE_SIZE', 15)
     ],
 
     /*
@@ -109,7 +109,7 @@ return [
             ]
         ],
 
-        'params'     => [
+        'params'  => [
             /*
             |--------------------------------------------------------------------------
             | Skip Cache Params
@@ -137,7 +137,7 @@ return [
        |
        | 'except'  =>['find'],
        */
-        'allowed'    => [
+        'allowed' => [
             'only'   => null,
             'except' => null
         ]
@@ -228,10 +228,10 @@ return [
     |
     */
     'generator'  => [
-        'basePath'      => app()->path(),
-        'rootNamespace' => 'App\\',
+        'basePath'          => app()->path(),
+        'rootNamespace'     => 'App\\',
         'stubsOverridePath' => app()->path(),
-        'paths'         => [
+        'paths'             => [
             'models'       => 'Models',
             'repositories' => 'Repositories',
             'interfaces'   => 'Repositories',

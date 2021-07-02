@@ -35,14 +35,17 @@ class PermissionSeeder extends Seeder
         ];
         $permissions = array_map(function ($module) use ($actions) {
             return array_map(function ($action) use ($module) {
-                return $action === 'list_' ? $action.$module : $action.Str::singular($module);
+                return [
+                    'name'       => $action === 'list_' ? $action.$module : $action.Str::singular($module),
+                    'guard_name' => 'api',
+                    'created_at' => now(),
+                ];
             }, $actions);
         }, $modules);
-        foreach (collect($permissions)
-                     ->collapse()
-                     ->toArray() as $permission) {
-            Permission::factory()
-                      ->create(['name' => $permission]);
-        }
+        $permissions = collect($permissions)
+            ->collapse()
+            ->toArray();
+        Permission::query()
+                  ->insert($permissions);
     }
 }
