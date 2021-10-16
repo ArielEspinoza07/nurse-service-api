@@ -61,7 +61,6 @@ class LoginController extends ApiController
         $this->repository->skipPresenter(false);
 
         return $this->success('Logged in.', [
-            'user'  => $user,
             'token' => $user->createToken(env('APP_TOKEN_NAME', env('APP_NAME')))->accessToken
         ]);
     }
