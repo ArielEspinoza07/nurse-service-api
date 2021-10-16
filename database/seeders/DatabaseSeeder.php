@@ -15,12 +15,12 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call([
+            WorkShiftTimeSeeder::class,
             MedicalNoteTypeSeeder::class,
             PermissionSeeder::class,
             RoleSeeder::class,
             RolePermissionsSeeder::class,
             UserSeeder::class,
-            WorkShiftTimeSeeder::class,
         ]);
     }
 }

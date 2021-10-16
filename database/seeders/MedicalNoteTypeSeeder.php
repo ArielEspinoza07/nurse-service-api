@@ -15,18 +15,32 @@ class MedicalNoteTypeSeeder extends Seeder
      */
     public function run()
     {
-        $departments = [
-            'Cardiologia',
-            'Cirugia',
-            'Emergencias',
-            'Ginecología y Obstetricia',
-            'Pediatria',
-            'Radiología e imágenes',
-        ];
-
-        foreach ($departments as $department) {
-            MedicalNoteType::factory()
-                           ->create(['name' => $department]);
-        }
+        MedicalNoteType::query()
+                       ->insert([
+                           [
+                               'name'       => 'Cardiologia',
+                               'created_at' => now(),
+                           ],
+                           [
+                               'name'       => 'Cirugia',
+                               'created_at' => now(),
+                           ],
+                           [
+                               'name'       => 'Emergencias',
+                               'created_at' => now(),
+                           ],
+                           [
+                               'name'       => 'Ginecología y Obstetricia',
+                               'created_at' => now(),
+                           ],
+                           [
+                               'name'       => 'Pediatria',
+                               'created_at' => now(),
+                           ],
+                           [
+                               'name'       => 'Radiología e imágenes',
+                               'created_at' => now(),
+                           ],
+                       ]);
     }
 }
